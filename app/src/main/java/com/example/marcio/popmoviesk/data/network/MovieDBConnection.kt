@@ -79,7 +79,7 @@ class MovieDBConnection {
             }
 
             override fun onError() {
-
+                Log.e("imageCallback","unknown error")
             }
         }
     }

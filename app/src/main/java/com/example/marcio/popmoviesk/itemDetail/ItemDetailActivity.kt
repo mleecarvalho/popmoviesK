@@ -1,7 +1,6 @@
 package com.example.marcio.popmoviesk.itemDetail
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.graphics.Palette
@@ -12,6 +11,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import com.example.marcio.popmoviesk.R
 import com.example.marcio.popmoviesk.data.model.Movie
+import com.example.marcio.popmoviesk.utils.ConvertUtils.getYearAmericanDate
 import kotlinx.android.synthetic.main.activity_item_detail.*
 
 /**
@@ -28,9 +28,11 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     private lateinit var synopse: TextView
     private lateinit var collapseImage: ImageView
     private lateinit var movieImage: ImageView
+    private lateinit var releaseDate: TextView
+    private lateinit var originalTitle: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_detail)
         this.movie = intent.getParcelableExtra<Movie>(LISTKEY)
         setPresenter()
@@ -57,6 +59,11 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     }
 
     private fun setFields() {
+        collapseImage = collapse_image
+        movieImage = movie_item_image
+        presenter.loadMovieImage(movieImage, movie.posterPath)
+        presenter.loadCollapseImage(collapseImage, movie.backdropPath)
+
         this.toplbar = toolbar
         setSupportActionBar(this.toplbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -65,16 +72,18 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
         collapseToolbarLayout = collapse_toolbar
         collapseToolbarLayout.title = movie.title
 
+        originalTitle = original_title_text
+        originalTitle.text = movie.originalTitle
+
         ratingBar = rating_bar
         ratingBar.rating = presenter.averageRateResults(movie.voteAverage)
+
+        releaseDate = release_date_text
+        releaseDate.text = getYearAmericanDate(movie.releaseDate)
 
         synopse = synopse_text
         synopse.text = movie.overview
 
-        collapseImage = collapse_image
-        movieImage = movie_item_image
-        presenter.loadMovieImage(movieImage, movie.posterPath)
-        presenter.loadCollapseImage(collapseImage, movie.backdropPath)
     }
 
     private fun setPresenter() {

@@ -10,7 +10,7 @@ import com.example.marcio.popmoviesk.data.network.MovieDBConnection
 class ListMovieAsyncTask: AsyncTask<ListMovieOrderBy, Void, ArrayList<Movie>> {
 
     private lateinit var asyncTask: ListMovieContract.AsyncTask
-    private var dbConnection: MovieDBConnection = MovieDBConnection().getInstance()
+    private val dbConnection: MovieDBConnection = MovieDBConnection().getInstance()
 
     constructor(asyncTask: ListMovieContract.AsyncTask){
         this.asyncTask = asyncTask
@@ -22,9 +22,7 @@ class ListMovieAsyncTask: AsyncTask<ListMovieOrderBy, Void, ArrayList<Movie>> {
     }
 
     override fun doInBackground(vararg list: ListMovieOrderBy?): ArrayList<Movie>? {
-       val type: ListMovieOrderBy = list[0] as ListMovieOrderBy
-       var moveList: ArrayList<Movie>? = null
-       return dbConnection.requestMovies(type)
+       return dbConnection.requestMovies(list[0]!!)
     }
 
     override fun onPostExecute(movies: ArrayList<Movie>) {

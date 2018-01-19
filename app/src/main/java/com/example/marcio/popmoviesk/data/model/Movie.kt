@@ -31,8 +31,8 @@ class Movie() : Parcelable {
         originalLanguage = jsonObject.optString("original_language")
         title = jsonObject.optString("title")
         backdropPath = jsonObject.optString("backdrop_path")
-        popularity = jsonObject.optDouble("poster_path")
-        voteCount = jsonObject.optInt("popularity")
+        popularity = jsonObject.optDouble("popularity")
+        voteCount = jsonObject.optInt("vote_count")
         video = jsonObject.optBoolean("video")
         voteAverage = jsonObject.optDouble("vote_average")
     }

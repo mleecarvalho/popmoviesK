@@ -68,10 +68,9 @@ class ListMovieActivity : AppCompatActivity(), View {
         this.presenter.attachView(this)
     }
 
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+    override fun onSaveInstanceState(outState: Bundle?) {
         outState!!.putInt(ORDERBY_KEY, orderBy!!.order)
-        super.onSaveInstanceState(outState, outPersistentState)
-
+        super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {

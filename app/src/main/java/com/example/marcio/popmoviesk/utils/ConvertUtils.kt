@@ -7,7 +7,7 @@ import java.util.*
 /**
  * Created by marcio on 18/01/2018.
  */
-class ConvertUtils(){
+object ConvertUtils{
 
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd")
 
