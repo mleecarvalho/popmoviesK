@@ -1,10 +1,17 @@
 package com.example.marcio.popmoviesk.data.network
 
+import android.content.Context
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.support.v7.graphics.Palette
 import android.util.Log
+import android.widget.ImageView
+import com.example.marcio.popmoviesk.R
 import com.example.marcio.popmoviesk.dashboard.ListMovieOrderBy
 import com.example.marcio.popmoviesk.data.model.Movie
 import com.example.marcio.popmoviesk.data.model.MovieProcessor
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -27,16 +34,6 @@ class MovieDBConnection {
     private val TOP_RATED_PATH: String = "3/movie/top_rated"
     private var dbConnection: MovieDBConnection? = null
 
-    fun getPicassoURLImage(picture: String) : String {
-        var imgUrl = StringBuilder()
-        if(!picture.isEmpty()){
-            imgUrl.append(PICASSO_ENDPOINT)
-                    .append(picture)
-
-        }
-        return imgUrl.toString()
-    }
-
 
     fun getInstance() : MovieDBConnection{
         if(dbConnection == null) {
@@ -47,6 +44,44 @@ class MovieDBConnection {
 
     fun requestMovies(type: ListMovieOrderBy): ArrayList<Movie>?{
         return requestMoviesList(this!!.buildRequestUrl(getRequestPath(type))!!)
+    }
+
+    fun getMovieImage(context: Context, imageView: ImageView, imagePath: String){
+        Picasso.with(context)
+                .load(this.getPicassoURLImage(imagePath))
+                .error(R.drawable.no_image)
+                .placeholder(R.drawable.no_image)
+                .into(imageView)
+    }
+
+    fun getCollapseImage(context: Context, imageView: ImageView, imagePath: String, listener : MovieDBConnectionListener){
+        Picasso.with(context)
+                .load(this.getPicassoURLImage(imagePath))
+                .into(imageView, imageCallback(imageView, listener))
+    }
+
+
+    private fun getPicassoURLImage(picture: String) : String {
+        var imgUrl = StringBuilder()
+        if(!picture.isEmpty()){
+            imgUrl.append(PICASSO_ENDPOINT)
+                    .append(picture)
+
+        }
+        return imgUrl.toString()
+    }
+
+    private fun imageCallback(imageView: ImageView, listener: MovieDBConnectionListener ): Callback {
+        return object : Callback {
+            override fun onSuccess() {
+                val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+                Palette.from(bitmap).generate { palette -> listener.imageCallback(palette) }
+            }
+
+            override fun onError() {
+
+            }
+        }
     }
 
     private fun getRequestPath(type: ListMovieOrderBy): String {
