@@ -17,6 +17,7 @@ public interface ItemDetailContract {
     interface Presenter: PresenterContract<View>{
         fun loadMovieImage(imageView: ImageView, imagePath: String)
         fun loadCollapseImage( imageView: ImageView, imagePath: String)
+        fun averageRateResults(averageVote : Double): Float
     }
 
 }

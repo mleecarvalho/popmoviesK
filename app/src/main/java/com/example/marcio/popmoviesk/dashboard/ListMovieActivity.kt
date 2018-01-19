@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.content_list_movie.*
 
 class ListMovieActivity : AppCompatActivity(), View {
 
-    private lateinit var presenter: ListMoviePresenter
+    private lateinit var presenter: ListMovieContract.Presenter
     private var orderBy: ListMovieOrderBy? = null
     private val ORDERBY_KEY = "orderBy"
     private lateinit var progressBar: ProgressBar
@@ -37,6 +37,11 @@ class ListMovieActivity : AppCompatActivity(), View {
     override fun onResume() {
         super.onResume()
         presenter.loadData(orderBy!!)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachView()
     }
 
     private fun setFields() {

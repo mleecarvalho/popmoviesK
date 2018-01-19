@@ -39,4 +39,9 @@ class ItemDetailPresenter: ItemDetailContract.Presenter, MovieDBConnectionListen
         this.view!!.setCollapsePallete(pallete)
     }
 
+    override fun averageRateResults(averageVote : Double): Float{
+        return averageVote.toFloat() / 2
+    }
+
+
 }
