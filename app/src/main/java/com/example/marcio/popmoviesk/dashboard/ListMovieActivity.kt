@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import android.widget.ProgressBar
 import com.example.marcio.popmoviesk.R
 import com.example.marcio.popmoviesk.dashboard.ListMovieContract.View
@@ -55,7 +56,7 @@ class ListMovieActivity : AppCompatActivity(), View {
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         this.recyclerView.layoutManager =  layoutManager
         this.recyclerView.setHasFixedSize(true)
-        this.listMovieAdapter = ListMovieAdapter(this, presenter.getMovieDBConnection())
+        this.listMovieAdapter = ListMovieAdapter(this, presenter.getMovieDBConnection() )
         recyclerView.adapter = this.listMovieAdapter
     }
 
@@ -114,6 +115,10 @@ class ListMovieActivity : AppCompatActivity(), View {
 
     override fun openItem(movie: Movie) {
 //        val intent = Intent(ListMovieActivity.this, )
+    }
+
+    override fun requestPicture(posterPath: String, movieImage: ImageView) {
+        presenter.getPicture(posterPath, movieImage)
     }
 
     private fun reloadList() {

@@ -1,9 +1,9 @@
 package com.example.marcio.popmoviesk.dashboard
 
 import android.content.Context
+import android.widget.ImageView
 import com.example.marcio.popmoviesk.data.model.Movie
 import com.example.marcio.popmoviesk.data.network.MovieDBConnection
-import com.example.marcio.popmoviesk.utils.NetConnection
 import com.example.marcio.popmoviesk.utils.NetConnection.hasInternetConnection
 import com.example.marcio.popmoviesk.utils.NetConnection.showConnectionError
 
@@ -81,5 +81,8 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
         }
     }
 
+    override fun getPicture(posterPath: String, movieImage: ImageView) {
+        movieDBConnection.getMovieImage(this.context!!, movieImage, posterPath)
+    }
 
 }

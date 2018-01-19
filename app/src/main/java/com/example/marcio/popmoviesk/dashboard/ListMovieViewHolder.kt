@@ -4,11 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.marcio.popmoviesk.R
-import com.example.marcio.popmoviesk.R.id.movie_image
 import com.example.marcio.popmoviesk.data.model.Movie
 import com.example.marcio.popmoviesk.data.network.MovieDBConnection
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_list_movie_item.view.*
 
 /**
@@ -24,24 +21,15 @@ class ListMovieViewHolder(view: View, mView: ListMovieContract.View, movieConnec
     private val movieConnection = movieConnection
 
 
-    fun bind(movie: Movie){
+    fun bind(movie: Movie, view: ListMovieContract.View){
         this.movie = movie
         this.movieTitle.text = movie.title
         movieImage.setOnClickListener(this)
-        getPicture()
+        view.requestPicture(movie.posterPath,movieImage)
     }
 
     override fun onClick(v: View?) {
         this.view.openItem(movie)
     }
-
-    private fun getPicture() {
-        Picasso.with(itemView.context)
-                .load(movieConnection.getPicassoURLImage(movie.posterPath))
-                .placeholder(R.drawable.no_image)
-                .error(R.drawable.no_image)
-                .into(movieImage)
-    }
-
 
 }

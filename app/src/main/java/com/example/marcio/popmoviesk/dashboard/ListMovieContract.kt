@@ -1,5 +1,6 @@
 package com.example.marcio.popmoviesk.dashboard
 
+import android.widget.ImageView
 import com.example.marcio.popmoviesk.PresenterContract
 import com.example.marcio.popmoviesk.data.model.Movie
 import com.example.marcio.popmoviesk.data.network.MovieDBConnection
@@ -13,6 +14,7 @@ interface ListMovieContract{
         fun fillList(listMovie: ArrayList<Movie>)
         fun showLoading()
         fun openItem(movie: Movie)
+        fun requestPicture(posterPath: String, movieImage: ImageView)
     }
 
     interface Presenter : PresenterContract<View>{
@@ -22,6 +24,7 @@ interface ListMovieContract{
         fun getListMovie(): ArrayList<Movie>
         fun getOrderBy(svdOb: Int): ListMovieOrderBy
         fun getMovieDBConnection(): MovieDBConnection
+        fun getPicture(posterPath: String, movieImage: ImageView)
     }
 
     interface AsyncTask{
