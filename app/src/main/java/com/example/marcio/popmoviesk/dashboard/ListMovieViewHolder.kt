@@ -5,23 +5,21 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.marcio.popmoviesk.data.model.Movie
-import com.example.marcio.popmoviesk.data.network.MovieDBConnection
 import kotlinx.android.synthetic.main.adapter_list_movie_item.view.*
 
 /**
  * Created by marcio on 18/01/2018.
  */
-class ListMovieViewHolder(view: View, mView: ListMovieContract.View, movieConnection: MovieDBConnection)
+class ListMovieViewHolder(view: View, mView: ListMovieContract.View)
     : RecyclerView.ViewHolder(view), View.OnClickListener{
 
     private val view = mView
     private lateinit var movie: Movie
     private val movieTitle: TextView = view.movie_title
     private val movieImage: ImageView = view.movie_image
-    private val movieConnection = movieConnection
 
 
-    fun bind(movie: Movie, view: ListMovieContract.View){
+    fun bind(movie: Movie){
         this.movie = movie
         this.movieTitle.text = movie.title
         movieImage.setOnClickListener(this)

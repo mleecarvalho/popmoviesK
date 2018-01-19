@@ -48,10 +48,6 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
         return this.listMovie!!
     }
 
-    override fun getMovieDBConnection(): MovieDBConnection {
-        return this.movieDBConnection
-    }
-
     override fun processStart() {
         view!!.showLoading()
     }

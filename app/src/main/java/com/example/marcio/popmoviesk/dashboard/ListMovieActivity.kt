@@ -1,5 +1,6 @@
 package com.example.marcio.popmoviesk.dashboard
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -14,6 +15,8 @@ import android.widget.ProgressBar
 import com.example.marcio.popmoviesk.R
 import com.example.marcio.popmoviesk.dashboard.ListMovieContract.View
 import com.example.marcio.popmoviesk.data.model.Movie
+import com.example.marcio.popmoviesk.itemDetail.ItemDetailActivity
+import com.example.marcio.popmoviesk.itemDetail.LISTKEY
 import com.example.marcio.popmoviesk.utils.NetConnection.hasInternetConnection
 import com.example.marcio.popmoviesk.utils.NetConnection.showConnectionError
 import kotlinx.android.synthetic.main.content_list_movie.*
@@ -56,7 +59,7 @@ class ListMovieActivity : AppCompatActivity(), View {
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         this.recyclerView.layoutManager =  layoutManager
         this.recyclerView.setHasFixedSize(true)
-        this.listMovieAdapter = ListMovieAdapter(this, presenter.getMovieDBConnection() )
+        this.listMovieAdapter = ListMovieAdapter(this)
         recyclerView.adapter = this.listMovieAdapter
     }
 
@@ -114,7 +117,9 @@ class ListMovieActivity : AppCompatActivity(), View {
     }
 
     override fun openItem(movie: Movie) {
-//        val intent = Intent(ListMovieActivity.this, )
+        val intent = Intent(this, ItemDetailActivity::class.java)
+        intent.putExtra(LISTKEY, movie)
+        startActivity(intent)
     }
 
     override fun requestPicture(posterPath: String, movieImage: ImageView) {

@@ -23,7 +23,6 @@ interface ListMovieContract{
         fun updateList(listMovie: ArrayList<Movie>)
         fun getListMovie(): ArrayList<Movie>
         fun getOrderBy(svdOb: Int): ListMovieOrderBy
-        fun getMovieDBConnection(): MovieDBConnection
         fun getPicture(posterPath: String, movieImage: ImageView)
     }
 

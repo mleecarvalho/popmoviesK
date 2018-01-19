@@ -17,23 +17,21 @@ import kotlinx.android.synthetic.main.activity_item_detail.*
 /**
  * Created by marcio on 19/01/2018.
  */
+
 class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
 
     private lateinit var presenter: ItemDetailContract.Presenter
     private lateinit var movie: Movie
-    private val LISTKEY = "Movies"
     private lateinit var toplbar: Toolbar
     private lateinit var collapseToolbarLayout: CollapsingToolbarLayout
     private lateinit var ratingBar: RatingBar
     private lateinit var synopse: TextView
     private lateinit var collapseImage: ImageView
     private lateinit var movieImage: ImageView
-    private val primaryDarkColor = resources.getColor(R.color.colorPrimaryDark)
-    private val primaryColor = resources.getColor(R.color.colorPrimary)
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-
+        setContentView(R.layout.activity_item_detail)
         this.movie = intent.getParcelableExtra<Movie>(LISTKEY)
         setPresenter()
         setFields()
@@ -41,8 +39,8 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
 
     override fun onDestroy() {
         super.onDestroy()
+        presenter.detachView()
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
@@ -52,6 +50,8 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     }
 
     override fun setCollapsePallete(pallete: Palette) {
+        val primaryDarkColor = resources.getColor(R.color.colorPrimaryDark)
+        val primaryColor = resources.getColor(R.color.colorPrimary)
         collapseToolbarLayout.setContentScrimColor(pallete.getDarkMutedColor(primaryColor))
         collapseToolbarLayout.setStatusBarScrimColor(pallete.getDarkMutedColor(primaryDarkColor))
     }
