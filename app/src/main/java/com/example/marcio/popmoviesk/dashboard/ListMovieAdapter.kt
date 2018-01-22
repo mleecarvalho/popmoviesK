@@ -25,7 +25,7 @@ class ListMovieAdapter(private val view: ListMovieContract.View) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ListMovieViewHolder?, position: Int) {
-        holder!!.bind(listMovie.get(position))
+        holder!!.bind(listMovie[position])
     }
 
     fun setMovieList(listMovie: ArrayList<Movie>){

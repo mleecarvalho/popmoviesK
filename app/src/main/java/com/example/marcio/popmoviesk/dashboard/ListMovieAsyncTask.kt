@@ -9,7 +9,7 @@ import com.example.marcio.popmoviesk.data.network.MovieDBConnection
  */
 class ListMovieAsyncTask: AsyncTask<ListMovieOrderBy, Void, ArrayList<Movie>> {
 
-    private lateinit var asyncTask: ListMovieContract.AsyncTask
+    private var asyncTask: ListMovieContract.AsyncTask
     private val dbConnection: MovieDBConnection = MovieDBConnection()
 
     constructor(asyncTask: ListMovieContract.AsyncTask){

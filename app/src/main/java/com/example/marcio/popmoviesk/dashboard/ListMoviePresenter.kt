@@ -58,9 +58,9 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
 
     override fun getOrderBy(svdOb: Int): ListMovieOrderBy {
         var orderBy = ListMovieOrderBy.values()
-                .forEachIndexed { index, listMovieOrderBy ->
+                .forEachIndexed({ index: Int, listMovieOrderBy: ListMovieOrderBy ->
                     if (listMovieOrderBy.order == svdOb) return listMovieOrderBy
-                } as ListMovieOrderBy
+                }) as ListMovieOrderBy
 
         return orderBy
     }
