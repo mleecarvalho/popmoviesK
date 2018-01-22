@@ -1,3 +1,25 @@
 <resources>
   <dimen name="fab_margin">16dp</dimen>
+  <dimen name="item_detail_collapsing_title_margin_start">48dp</dimen>
+  <dimen name="item_detail_collapsing_title_margin_end">64dp</dimen>
+  <dimen name="item_detail_imageview_layout_height">250dp</dimen>
+  <dimen name="item_detail_nested_linear_padding">16dp</dimen>
+  <dimen name="item_detail_poster_width">185dp</dimen>
+  <dimen name="item_detail_poster_height">277dp</dimen>
+  <dimen name="item_detail_linear_margin_left">8dp</dimen>
+  <dimen name="item_detail_original_title_text_size">14sp</dimen>
+  <dimen name="item_detail_movie_text_size">20sp</dimen>
+  <dimen name="item_detail_movie_content_text_size">14sp</dimen>
+  <dimen name="item_detail_movie_date_text_size">20sp</dimen>
+  <dimen name="item_detail_movie_date_margin_bottom">16dp</dimen>
+  <dimen name="item_detail_rating_title_text_size">14sp</dimen>
+  <dimen name="item_detail_ratingbar_margin_top">4dp</dimen>
+  <dimen name="item_detail_linear_synopse_margin_top">8dp</dimen>
+  <dimen name="item_detail_sypnose_text_size">18sp</dimen>
+  <dimen name="item_list_frame_min_width">185dp</dimen>
+  <dimen name="item_list_list_frame_min_height">277dp</dimen>
+  <dimen name="item_list_min_height_layout">62dp</dimen>
+  <dimen name="item_list_layout_padding">8dp</dimen>
+  <dimen name="item_list_text_size">18sp</dimen>
+  <dimen name="list_movie_progressbar_size">50dp</dimen>
 </resources>

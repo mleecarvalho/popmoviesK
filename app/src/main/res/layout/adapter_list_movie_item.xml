@@ -2,8 +2,8 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:minWidth="185dp"
-    android:minHeight="277dp"
+    android:minWidth="@dimen/item_list_frame_min_width"
+    android:minHeight="@dimen/item_list_list_frame_min_height"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -11,8 +11,8 @@
       android:id="@+id/movie_image"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:minWidth="185dp"
-      android:minHeight="277dp"
+      android:minWidth="@dimen/item_list_frame_min_width"
+      android:minHeight="@dimen/item_list_list_frame_min_height"
       android:adjustViewBounds="true"
       />
 
@@ -25,9 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black_transparent"
-        android:minHeight="62dp"
+        android:minHeight="@dimen/item_list_min_height_layout"
         android:textAlignment="center"
-        android:padding="8dp"
+        android:padding="@dimen/item_list_layout_padding"
         >
       <TextView
           android:id="@+id/movie_title"
@@ -35,7 +35,7 @@
           android:layout_height="wrap_content"
           android:layout_gravity="center_vertical"
           android:textColor="@android:color/white"
-          android:textSize="18sp"
+          android:textSize="@dimen/item_list_text_size"
           android:textStyle="bold"
           android:text="@string/app_name"
           />
