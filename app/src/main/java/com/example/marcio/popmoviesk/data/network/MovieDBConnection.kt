@@ -1,9 +1,7 @@
 package com.example.marcio.popmoviesk.data.network
 
 import android.content.Context
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import android.support.v7.graphics.Palette
 import android.util.Log
 import android.widget.ImageView
 import com.example.marcio.popmoviesk.R
@@ -32,15 +30,7 @@ class MovieDBConnection {
     private val PICASSO_ENDPOINT: String = "http://image.tmdb.org/t/p/w185"
     private val POPULARITY_PATH: String = "3/movie/popular"
     private val TOP_RATED_PATH: String = "3/movie/top_rated"
-    private var dbConnection: MovieDBConnection? = null
 
-
-    fun getInstance() : MovieDBConnection{
-        if(dbConnection == null) {
-            dbConnection = MovieDBConnection()
-        }
-        return dbConnection!!
-    }
 
     fun requestMovies(type: ListMovieOrderBy): ArrayList<Movie>?{
         return requestMoviesList(this!!.buildRequestUrl(getRequestPath(type))!!)
@@ -54,10 +44,10 @@ class MovieDBConnection {
                 .into(imageView)
     }
 
-    fun getCollapseImage(context: Context, imageView: ImageView, imagePath: String, listener : MovieDBConnectionListener){
-        Picasso.with(context)
+    fun getCollapseImage(context: Context, imageView: ImageView, imagePath: String, listener : Callback){
+       Picasso.with(context)
                 .load(this.getPicassoURLImage(imagePath))
-                .into(imageView, imageCallback(imageView, listener))
+                .into(imageView, listener)
     }
 
 
@@ -69,19 +59,6 @@ class MovieDBConnection {
 
         }
         return imgUrl.toString()
-    }
-
-    private fun imageCallback(imageView: ImageView, listener: MovieDBConnectionListener ): Callback {
-        return object : Callback {
-            override fun onSuccess() {
-                val bitmap = (imageView.drawable as BitmapDrawable).bitmap
-                Palette.from(bitmap).generate { palette -> listener.imageCallback(palette) }
-            }
-
-            override fun onError() {
-                Log.e("imageCallback","unknown error")
-            }
-        }
     }
 
     private fun getRequestPath(type: ListMovieOrderBy): String {
