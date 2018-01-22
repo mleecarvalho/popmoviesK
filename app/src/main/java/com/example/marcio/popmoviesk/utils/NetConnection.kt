@@ -19,8 +19,8 @@ object NetConnection {
     }
 
     fun showConnectionError(activity: Activity){
-        val builder = AlertDialog.Builder(activity)
-        builder.setMessage(R.string.no_internet_msg)
+        AlertDialog.Builder(activity)
+                .setMessage(R.string.no_internet_msg)
                 .setTitle(R.string.connection_error_title)
                 .setPositiveButton(R.string.ok_button, { dialog, _ -> dialog.dismiss() } )
     }

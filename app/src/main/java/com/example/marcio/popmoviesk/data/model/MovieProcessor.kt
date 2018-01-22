@@ -1,6 +1,5 @@
 package com.example.marcio.popmoviesk.data.model
 
-import com.example.marcio.popmoviesk.data.model.Movie
 import org.json.JSONArray
 import org.json.JSONException
 

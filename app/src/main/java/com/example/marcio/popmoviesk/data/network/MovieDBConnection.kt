@@ -45,7 +45,7 @@ class MovieDBConnection {
     }
 
     fun getCollapseImage(context: Context, imageView: ImageView, imagePath: String, listener : Callback){
-       Picasso.with(context)
+        Picasso.with(context)
                 .load(this.getPicassoURLImage(imagePath))
                 .into(imageView, listener)
     }
@@ -64,9 +64,11 @@ class MovieDBConnection {
         return imgUrl.toString()
     }
 
-    private fun getRequestPath(type: ListMovieOrderBy): String {
-        return if(type == ListMovieOrderBy.POPULARITY) POPULARITY_PATH else TOP_RATED_PATH
-    }
+    private fun getRequestPath(type: ListMovieOrderBy) =
+            when(type) {
+                ListMovieOrderBy.POPULARITY -> POPULARITY_PATH
+                else -> TOP_RATED_PATH
+            }
 
     private fun buildRequestUrl(path: String): URL? {
         val builtUri = Uri.parse(MOVIEDB_ENDPOINT)
@@ -96,10 +98,8 @@ class MovieDBConnection {
         return request
     }
 
-    private fun parseJsonListMovie(stringRequest: String): ArrayList<Movie>? {
-        val results = JSONObject(stringRequest).getJSONArray("results")
-        return MovieProcessor.process(results)
-    }
+    private fun parseJsonListMovie(stringRequest: String) =
+            MovieProcessor.process(JSONObject(stringRequest).getJSONArray("results"))
 
     private fun getResponseFromHttpUrl(movieUrl: URL): String? {
         var urlConnection: HttpURLConnection = movieUrl.openConnection() as HttpURLConnection

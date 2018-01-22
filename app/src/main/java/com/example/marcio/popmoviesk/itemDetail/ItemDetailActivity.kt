@@ -1,5 +1,6 @@
 package com.example.marcio.popmoviesk.itemDetail
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v7.app.AppCompatActivity
@@ -30,6 +31,8 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     private lateinit var movieImage: ImageView
     private lateinit var releaseDate: TextView
     private lateinit var originalTitle: TextView
+    private val primaryDarkColor = resources.getColor(R.color.colorPrimaryDark)
+    private val primaryColor = resources.getColor(R.color.colorPrimary)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +55,6 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     }
 
     override fun setCollapsePallete(pallete: Palette) {
-        val primaryDarkColor = resources.getColor(R.color.colorPrimaryDark)
-        val primaryColor = resources.getColor(R.color.colorPrimary)
         collapseToolbarLayout.setContentScrimColor(pallete.getDarkMutedColor(primaryColor))
         collapseToolbarLayout.setStatusBarScrimColor(pallete.getDarkMutedColor(primaryDarkColor))
     }
@@ -71,6 +72,8 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
 
         collapseToolbarLayout = collapse_toolbar
         collapseToolbarLayout.title = movie.title
+        collapseToolbarLayout.setContentScrimColor(primaryDarkColor)
+        collapseToolbarLayout.setStatusBarScrimColor(primaryDarkColor)
 
         originalTitle = original_title_text
         originalTitle.text = movie.originalTitle

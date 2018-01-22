@@ -10,30 +10,13 @@ import java.util.*
 object ConvertUtils{
 
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+    private val gregorianFormat = SimpleDateFormat("dd/MM/yyyy")
+    private val yearFormat = SimpleDateFormat("yyyy")
 
-    fun formatToGregorianDate(dateStr: String) : String{
-        val convertFormat = SimpleDateFormat("dd/MM/yyyy")
-        var date: Date? = null
+    fun formatToGregorianDate(dateStr: String) = format(dateStr, gregorianFormat)
+    fun getYearAmericanDate(dateStr: String)  = format(dateStr, yearFormat)
 
-        try{
-            date = dateFormat.parse(dateStr)
-        }catch (e: ParseException){
-            e.printStackTrace()
-        }
-        return convertFormat.format(date)
-    }
-
-    fun getYearAmericanDate(dateStr: String) : String{
-        val yearFormat = SimpleDateFormat("yyyy")
-        var date: Date? = null
-
-        try{
-            date = dateFormat.parse(dateStr)
-        }catch (e: ParseException){
-            e.printStackTrace()
-        }
-        return yearFormat.format(date)
-
-    }
-
+   private fun format(dateStr: String, formatter: SimpleDateFormat) =
+            dateStr.let { dateFormat.parse(it) }
+                    .let { formatter.format(it) }
 }

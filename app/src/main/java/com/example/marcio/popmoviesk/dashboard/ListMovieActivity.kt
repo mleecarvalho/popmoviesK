@@ -125,7 +125,7 @@ class ListMovieActivity : AppCompatActivity(), View {
     }
 
     private fun reloadList() {
-        if(hasInternetConnection(this)){
+        if(hasInternetConnection(this)!!){
             setAdapter()
             presenter.reloadData(orderBy!!)
         }else{

@@ -68,7 +68,7 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
 
     private fun executeAsyncTaskData(orderBy: ListMovieOrderBy) {
         if(this.context != null) {
-            if(hasInternetConnection(this.context as Context)){
+            if(hasInternetConnection(this.context as Context)!!){
                 this.listMovie = ArrayList()
                 ListMovieAsyncTask(this).execute(orderBy)
             } else {
