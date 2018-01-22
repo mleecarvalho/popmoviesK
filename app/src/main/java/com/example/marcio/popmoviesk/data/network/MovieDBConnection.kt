@@ -50,6 +50,9 @@ class MovieDBConnection {
                 .into(imageView, listener)
     }
 
+    fun cancelRequest(context: Context, imageView: ImageView?) {
+        Picasso.with(context).cancelRequest(imageView)
+    }
 
     private fun getPicassoURLImage(picture: String) : String {
         var imgUrl = StringBuilder()
@@ -111,6 +114,5 @@ class MovieDBConnection {
             urlConnection.disconnect()
         }
     }
-
 
 }

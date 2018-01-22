@@ -25,8 +25,10 @@ class ItemDetailPresenter : ItemDetailContract.Presenter, Callback {
     }
 
     override fun detachView() {
+        dbConnection.cancelRequest(this.context!!,collapseImageView)
         this.view = null
         this.context = null
+        this.collapseImageView = null
     }
 
     override fun loadMovieImage(imageView: ImageView, imagePath: String) {
