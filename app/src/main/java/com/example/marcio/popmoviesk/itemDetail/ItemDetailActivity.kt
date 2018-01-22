@@ -3,6 +3,7 @@ package com.example.marcio.popmoviesk.itemDetail
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.graphics.Palette
 import android.support.v7.widget.Toolbar
@@ -31,8 +32,8 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     private lateinit var movieImage: ImageView
     private lateinit var releaseDate: TextView
     private lateinit var originalTitle: TextView
-    private val primaryDarkColor = resources.getColor(R.color.colorPrimaryDark)
-    private val primaryColor = resources.getColor(R.color.colorPrimary)
+    private var primaryDarkColor: Int = 0
+    private var primaryColor: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +61,9 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     }
 
     private fun setFields() {
+        primaryDarkColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
+        primaryColor = ContextCompat.getColor(this, R.color.colorPrimary)
+
         collapseImage = collapse_image
         movieImage = movie_item_image
         presenter.loadMovieImage(movieImage, movie.posterPath)
