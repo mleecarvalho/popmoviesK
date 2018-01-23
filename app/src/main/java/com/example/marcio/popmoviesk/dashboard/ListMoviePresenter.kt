@@ -53,6 +53,7 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
     }
 
     override fun processFinish(movies: ArrayList<Movie>) {
+        this.listMovie = movies
         view!!.fillList(movies)
     }
 
