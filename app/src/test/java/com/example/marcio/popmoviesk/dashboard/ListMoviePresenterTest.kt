@@ -58,11 +58,11 @@ class ListMoviePresenterTest{
 
     }
 
-    private fun getMockMoviesResult(inputStream: InputStream): ArrayList<Movie>{
+    private fun getMockMoviesResult(inputStream: InputStream) =
+            MovieProcessor
+                    .process(
+                            JSONObject(inputStream.bufferedReader().use { it.readText() }
+                    ).getJSONArray("results"))
 
-        val popularString = inputStream.bufferedReader().use { it.readText() }
-        return MovieProcessor.process(JSONObject(popularString).getJSONArray("results"))
-
-    }
 
 }
