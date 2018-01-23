@@ -15,7 +15,7 @@ import com.example.marcio.popmoviesk.R
 import com.example.marcio.popmoviesk.dashboard.ListMovieContract.View
 import com.example.marcio.popmoviesk.data.model.Movie
 import com.example.marcio.popmoviesk.itemDetail.ItemDetailActivity
-import com.example.marcio.popmoviesk.itemDetail.LISTKEY
+import com.example.marcio.popmoviesk.utils.Constants.LISTKEY
 import com.example.marcio.popmoviesk.utils.NetConnection.hasInternetConnection
 import com.example.marcio.popmoviesk.utils.NetConnection.showConnectionError
 import kotlinx.android.synthetic.main.content_list_movie.*
@@ -134,7 +134,7 @@ class ListMovieActivity : AppCompatActivity(), View {
     }
 
     private fun setOrderBy(order: ListMovieOrderBy): Boolean {
-        val mustSet = !(order == this.orderBy)
+        val mustSet = order != this.orderBy
         if(mustSet)
             this.orderBy = order
         return mustSet

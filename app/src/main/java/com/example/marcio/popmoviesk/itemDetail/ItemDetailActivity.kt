@@ -1,6 +1,5 @@
 package com.example.marcio.popmoviesk.itemDetail
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.content.ContextCompat
@@ -13,6 +12,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import com.example.marcio.popmoviesk.R
 import com.example.marcio.popmoviesk.data.model.Movie
+import com.example.marcio.popmoviesk.utils.Constants.LISTKEY
 import com.example.marcio.popmoviesk.utils.ConvertUtils.getYearAmericanDate
 import kotlinx.android.synthetic.main.activity_item_detail.*
 

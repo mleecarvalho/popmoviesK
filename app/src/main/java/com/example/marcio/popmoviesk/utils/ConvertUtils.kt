@@ -16,7 +16,7 @@ object ConvertUtils{
     fun formatToGregorianDate(dateStr: String) = format(dateStr, gregorianFormat)
     fun getYearAmericanDate(dateStr: String)  = format(dateStr, yearFormat)
 
-   private fun format(dateStr: String, formatter: SimpleDateFormat) =
-            dateStr.let { dateFormat.parse(it) }
-                    .let { formatter.format(it) }
+    private fun format(dateStr: String, formatter: SimpleDateFormat) =
+            dateStr.let{ dateFormat.parse(it) }
+                    .let{ formatter.format(it) }
 }

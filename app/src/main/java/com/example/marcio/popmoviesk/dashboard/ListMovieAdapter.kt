@@ -20,9 +20,11 @@ class ListMovieAdapter(private val view: ListMovieContract.View) : RecyclerView.
         return ListMovieViewHolder(inflateView, view)
     }
 
-    override fun getItemCount(): Int {
-        return if(this.listMovie != null) listMovie.size else 0
+    override fun getItemCount() = when {
+        this.listMovie != null -> listMovie.size
+        else -> 0
     }
+
 
     override fun onBindViewHolder(holder: ListMovieViewHolder?, position: Int) {
         holder!!.bind(listMovie[position])

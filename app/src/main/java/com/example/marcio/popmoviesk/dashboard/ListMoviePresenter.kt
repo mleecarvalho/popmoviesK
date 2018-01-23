@@ -56,14 +56,11 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
         view!!.fillList(movies)
     }
 
-    override fun getOrderBy(svdOb: Int): ListMovieOrderBy {
-        var orderBy = ListMovieOrderBy.values()
-                .forEachIndexed({ index: Int, listMovieOrderBy: ListMovieOrderBy ->
-                    if (listMovieOrderBy.order == svdOb) return listMovieOrderBy
-                }) as ListMovieOrderBy
+    override fun getOrderBy(svdOb: Int) =
+            ListMovieOrderBy.values().forEachIndexed({ index: Int, listMovieOrderBy: ListMovieOrderBy ->
+                if (listMovieOrderBy.order == svdOb) return listMovieOrderBy
+            }) as ListMovieOrderBy
 
-        return orderBy
-    }
 
 
     private fun executeAsyncTaskData(orderBy: ListMovieOrderBy) {

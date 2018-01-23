@@ -18,6 +18,7 @@ class ItemDetailPresenter : ItemDetailContract.Presenter, Callback {
     private var dbConnection: MovieDBConnection = MovieDBConnection()
     private var collapseImageView: ImageView? = null
 
+
     override fun attachView(view: ItemDetailContract.View) {
         this.view = view
         this.context = (view as ItemDetailActivity).baseContext
