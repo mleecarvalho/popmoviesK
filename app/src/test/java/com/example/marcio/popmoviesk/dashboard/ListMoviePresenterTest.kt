@@ -17,8 +17,6 @@ import java.io.InputStream
 @RunWith(RobolectricTestRunner::class)
 class ListMoviePresenterTest{
 
-    private lateinit var view: ListMovieActivity
-
     private lateinit var presenter: ListMoviePresenter
     private val popularMoviesMockFileStream = javaClass.classLoader
             .getResourceAsStream("popularMovies.json")
