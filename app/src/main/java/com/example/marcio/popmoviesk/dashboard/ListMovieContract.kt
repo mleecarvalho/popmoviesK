@@ -3,7 +3,6 @@ package com.example.marcio.popmoviesk.dashboard
 import android.widget.ImageView
 import com.example.marcio.popmoviesk.PresenterContract
 import com.example.marcio.popmoviesk.data.model.Movie
-import com.example.marcio.popmoviesk.data.network.MovieDBConnection
 
 /**
  * Created by marcio on 18/01/2018.

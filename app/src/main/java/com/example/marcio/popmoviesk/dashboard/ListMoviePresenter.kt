@@ -52,16 +52,15 @@ class ListMoviePresenter : ListMovieContract.Presenter, ListMovieContract.AsyncT
         view!!.showLoading()
     }
 
-    override fun processFinish(movies: ArrayList<Movie>) {
-        this.listMovie = movies
-        view!!.fillList(movies)
+    override fun processFinish(movieList: ArrayList<Movie>) {
+        this.listMovie = movieList
+        view!!.fillList(movieList)
     }
 
     override fun getOrderBy(svdOb: Int) =
-            ListMovieOrderBy.values().forEachIndexed({ index: Int, listMovieOrderBy: ListMovieOrderBy ->
+            ListMovieOrderBy.values().forEachIndexed({ _: Int, listMovieOrderBy: ListMovieOrderBy ->
                 if (listMovieOrderBy.order == svdOb) return listMovieOrderBy
             }) as ListMovieOrderBy
-
 
 
     private fun executeAsyncTaskData(orderBy: ListMovieOrderBy) {

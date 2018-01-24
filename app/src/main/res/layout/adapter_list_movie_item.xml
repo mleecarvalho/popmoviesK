@@ -14,6 +14,7 @@
       android:minWidth="@dimen/item_list_frame_min_width"
       android:minHeight="@dimen/item_list_list_frame_min_height"
       android:adjustViewBounds="true"
+      android:contentDescription=""
       />
 
   <RelativeLayout

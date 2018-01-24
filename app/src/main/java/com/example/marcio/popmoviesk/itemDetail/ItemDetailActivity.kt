@@ -38,7 +38,7 @@ class ItemDetailActivity : AppCompatActivity(), ItemDetailContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_detail)
-        this.movie = intent.getParcelableExtra<Movie>(LISTKEY)
+        this.movie = intent.getParcelableExtra(LISTKEY)
         setPresenter()
         setFields()
     }

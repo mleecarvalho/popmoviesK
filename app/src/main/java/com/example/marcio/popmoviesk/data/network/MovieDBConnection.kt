@@ -25,15 +25,15 @@ import kotlin.collections.ArrayList
 
 class MovieDBConnection {
 
-    private val API_DBKEY: String = "3502fee1eb0ff1815d316905b20662eb"
-    private val MOVIEDB_ENDPOINT: String = "https://api.themoviedb.org/"
-    private val PICASSO_ENDPOINT: String = "http://image.tmdb.org/t/p/w185"
-    private val POPULARITY_PATH: String = "3/movie/popular"
-    private val TOP_RATED_PATH: String = "3/movie/top_rated"
+    private val apiDBKey: String = "3502fee1eb0ff1815d316905b20662eb"
+    private val movieDBEndpoint: String = "https://api.themoviedb.org/"
+    private val picassoEndpoint: String = "http://image.tmdb.org/t/p/w185"
+    private val popularityPath: String = "3/movie/popular"
+    private val topRatedPath: String = "3/movie/top_rated"
 
 
     fun requestMovies(type: ListMovieOrderBy): ArrayList<Movie>?{
-        return requestMoviesList(this!!.buildRequestUrl(getRequestPath(type))!!)
+        return requestMoviesList(this.buildRequestUrl(getRequestPath(type))!!)
     }
 
     fun getMovieImage(context: Context, imageView: ImageView, imagePath: String){
@@ -55,9 +55,9 @@ class MovieDBConnection {
     }
 
     private fun getPicassoURLImage(picture: String) : String {
-        var imgUrl = StringBuilder()
+        val imgUrl = StringBuilder()
         if(!picture.isEmpty()){
-            imgUrl.append(PICASSO_ENDPOINT)
+            imgUrl.append(picassoEndpoint)
                     .append(picture)
 
         }
@@ -66,15 +66,15 @@ class MovieDBConnection {
 
     private fun getRequestPath(type: ListMovieOrderBy) =
             when(type) {
-                ListMovieOrderBy.POPULARITY -> POPULARITY_PATH
-                else -> TOP_RATED_PATH
+                ListMovieOrderBy.POPULARITY -> popularityPath
+                else -> topRatedPath
             }
 
     private fun buildRequestUrl(path: String): URL? {
-        val builtUri = Uri.parse(MOVIEDB_ENDPOINT)
+        val builtUri = Uri.parse(movieDBEndpoint)
                 .buildUpon()
                 .path(path)
-                .appendQueryParameter("api_key", API_DBKEY)
+                .appendQueryParameter("api_key", apiDBKey)
                 .build()
         var requestURL: URL? = null
         try {
@@ -102,9 +102,9 @@ class MovieDBConnection {
             MovieProcessor.process(JSONObject(stringRequest).getJSONArray("results"))
 
     private fun getResponseFromHttpUrl(movieUrl: URL): String? {
-        var urlConnection: HttpURLConnection = movieUrl.openConnection() as HttpURLConnection
+        val urlConnection: HttpURLConnection = movieUrl.openConnection() as HttpURLConnection
         try {
-            val input: InputStream = urlConnection.inputStream;
+            val input: InputStream = urlConnection.inputStream
 
             val scanner = Scanner(input)
             scanner.useDelimiter("\\A")

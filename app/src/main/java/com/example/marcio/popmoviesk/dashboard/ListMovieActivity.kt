@@ -24,7 +24,7 @@ class ListMovieActivity : AppCompatActivity(), View {
 
     private lateinit var presenter: ListMovieContract.Presenter
     private var orderBy: ListMovieOrderBy? = null
-    private val ORDERBY_KEY = "orderBy"
+    private val orderByKey = "orderBy"
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
     private lateinit var listMovieAdapter : ListMovieAdapter
@@ -68,15 +68,14 @@ class ListMovieActivity : AppCompatActivity(), View {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState!!.putInt(ORDERBY_KEY, orderBy!!.order)
+        outState!!.putInt(orderByKey, orderBy!!.order)
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        if(savedInstanceState != null && savedInstanceState.containsKey(ORDERBY_KEY))
-            if(presenter != null)
-                this.orderBy = presenter.getOrderBy(savedInstanceState.getInt(ORDERBY_KEY))
+        if(savedInstanceState != null && savedInstanceState.containsKey(orderByKey))
+            this.orderBy = presenter.getOrderBy(savedInstanceState.getInt(orderByKey))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

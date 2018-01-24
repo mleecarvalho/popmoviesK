@@ -3,7 +3,6 @@ package com.example.marcio.popmoviesk.utils
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.net.ConnectivityManager
 import com.example.marcio.popmoviesk.R
 

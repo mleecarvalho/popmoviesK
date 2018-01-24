@@ -9,7 +9,7 @@ import org.json.JSONException
 object MovieProcessor {
 
     fun process(results: JSONArray): ArrayList<Movie>{
-        var movies = ArrayList<Movie>()
+        val movies = ArrayList<Movie>()
         try {
             if (results.length() > 0){
                 for(i in 0..(results.length() - 1)){

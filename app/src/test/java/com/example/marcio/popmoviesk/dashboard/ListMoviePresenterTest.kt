@@ -36,12 +36,10 @@ class ListMoviePresenterTest{
     @Test
     fun updateDataTest(){
 
-        var firstList: ArrayList<Movie>?
-
         // carrega os dados
         presenter.updateList(getMockMoviesResult(popularMoviesMockFileStream))
 
-        firstList = presenter.getListMovie()
+        val firstList = presenter.getListMovie()
 
         // checa se lista de filmes não está nula
         Assert.assertNotNull(firstList)

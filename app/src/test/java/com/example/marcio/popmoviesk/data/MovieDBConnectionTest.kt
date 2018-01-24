@@ -30,7 +30,7 @@ class MovieDBConnectionTest {
 
     @Test
     fun buildResquestUrlRatingTest(){
-        val popularList = dbConnection.requestMovies(ListMovieOrderBy.RATING)
-        Assert.assertNotNull(popularList)
+        val ratingList = dbConnection.requestMovies(ListMovieOrderBy.RATING)
+        Assert.assertNotNull(ratingList)
     }
 }

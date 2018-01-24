@@ -7,14 +7,9 @@ import com.example.marcio.popmoviesk.data.network.MovieDBConnection
 /**
  * Created by marcio on 18/01/2018.
  */
-class ListMovieAsyncTask: AsyncTask<ListMovieOrderBy, Void, ArrayList<Movie>> {
+class ListMovieAsyncTask(private var asyncTask: ListMovieContract.AsyncTask) : AsyncTask<ListMovieOrderBy, Void, ArrayList<Movie>>() {
 
-    private var asyncTask: ListMovieContract.AsyncTask
     private val dbConnection: MovieDBConnection = MovieDBConnection()
-
-    constructor(asyncTask: ListMovieContract.AsyncTask){
-        this.asyncTask = asyncTask
-    }
 
     override fun onPreExecute() {
         super.onPreExecute()

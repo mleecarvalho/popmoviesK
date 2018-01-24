@@ -8,7 +8,7 @@ import android.support.v7.graphics.Palette
  * Created by marcio on 19/01/2018.
  */
 
-public interface ItemDetailContract {
+interface ItemDetailContract {
 
     interface View{
         fun setCollapsePallete(pallete: Palette)

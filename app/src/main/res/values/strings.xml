@@ -11,4 +11,5 @@
     <string name="movie_details_title">Movie Details</string>
     <string name="dummy_date_text">00/00/000</string>
     <string name="item_detail_synopse_text">Sinopse</string>
+    <string name="item_detail_name_text">Name</string>
 </resources>
